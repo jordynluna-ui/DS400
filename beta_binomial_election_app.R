@@ -85,7 +85,7 @@
 ##
 ## Your answer:
 ## there's a 95% probability the true support is in this range.
-## 
+## because pi is treated as a fixed, unknown constant.
 ## ------------------------------------------------------------
 ## Q7 (Tab 2) -- Set alpha = 90, beta = 10 (strong prior belief support
 ## is ~90%). Now set n = 200, y = 40 (20% support in the new poll -- a
@@ -94,8 +94,9 @@
 ## weight sentence? Why did the data win here when it didn't in Q5?
 ##
 ## Your answer:
-## double the weight
-## 
+## closer to the data
+## this matches the weight sentence
+## the data won here because it carries more weight than our prior
 ## ------------------------------------------------------------
 ## Q8 (Reflection -- no fixed answer) -- The app's posterior treats
 ## every respondent in the poll equally, regardless of when the
@@ -107,8 +108,8 @@
 ## noisily varying around a fixed number.
 ##
 ## Your answer:
-##
-##
+## something could happen after the prior that significantly changed the support.
+## sothe weight of the data matters more than the prior.
 ## ============================================================
 
 
