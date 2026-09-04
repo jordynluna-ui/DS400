@@ -81,40 +81,40 @@ Things to keep on mind:
 
 Set the scene...
 
-Last year, the women's basketball team was 10 wins and 14 loses. To make the playoffs a team needs to win at least 12 out of 24 games. They started the first half of the season winning 5 games and losing 7 games. The start of the second half of the season was 3 games and one loss. What's the chance the team makes the playoffs?
+Based on the womens basketball team's previous competitive season and preseason expectations, we believe the team's true probability of winning a game is around 50%, but could reasonably be anywhere between 35% to 65%.
 
-define π
+define π - the team's true underlying probability of winning a game.
 
 ```{r}
-#plot_beta(alpha = 11, beta = 15)
+#plot_beta(alpha = 25, beta = 25)
 ```
 
-Statement = "Before any new data we believe there's a 95% chance π is between 22.8% and 64.5%, with 42.3% as our single best guess."
+Statement = "Before any new data we believe there's a 95% chance π is between 36% and 64%, with 50% as our single best guess."
 
-Prior effective sample size = 26
+Prior effective sample size = 50 pseudo-games
 
-mean = 42.3%
+mean = 50%
 
 ### Likelihood
 
-**New data arrives:** We commission new data of *n = 12 games* and record *y* = 5, the number of games the team won. We gather 12 data points in which y = 5 (41.7%) resulted in wins -- noticeably slightly lower than the 42.3% prior average.
+**New data arrives:** We commission new data of *n = 10 games* and record *y* = 7, the number of games the team won. We gather 10 data points in which y = 7 (70%) resulted in wins -- noticeably higher than the 50% prior average.
 
 ```{r}
-#plot_binomial_likelihood(y = 5, n = 12)
+#plot_binomial_likelihood(y = 7, n = 10)
 ```
 
-Likelihood Question: "For each possible value of π —the underlying probability of winning a game— how compatible is that value with having produced exactly 5 out of 12 in this data collection?"
+Likelihood Question: "For each possible value of π —the underlying probability of winning a game— how compatible is that value with having produced exactly 7 wins out of 10 games in this data collection?"
 
-Likelihood Statement: "Taken on its own, this data makes values of π near 41.7% far more plausible than values near 60%— the data alone points to a slightly lower number than we'd been expecting"
+Likelihood Statement: "Taken on its own, this data makes values of π near 70% far more plausible than values near 50%— the data alone points to a higher number than we'd been expecting"
 
 ### Posterior
 
 ```{r}
-#plot_beta_binomial(alpha = 16, beta = 22, y = 5, n = 12)
+#plot_beta_binomial(alpha = 25, beta = 25, y = 7, n = 3)
 ```
 
-Statement = "There's a 95% probability that π lies between 27.0% and 58.2%."
+Statement = "There's a 95% probability that π lies between 40.7% and 65.8%."
 
-42.1% as our best guess.
+53.3% as our best guess.
 
-Weight = prior (worth \~ 26) contributes 68.4% of the weight, and our new data (n = 12 effective games) contributes the other 31.6%.
+Weight = prior (worth \~ 50) contributes 83.3% of the weight, and our new data (n = 10 games) contributes the other 16.7%.
