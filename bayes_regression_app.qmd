@@ -637,17 +637,14 @@ shinyApp(ui, server)
 
 ### Questions
 
-1.  22 to 178 rides
-2.  The plot's spread gets higher at the ends, but more concentrated in the middle.
+1.  mean ± 1.96xSD = plausible range for beta1
+    1.  100 ± 1.96(40) ≈ 178 rides
+2.  The plot's spread gets higher at the ends, but more concentrated in the middle. It can have a negative correlation.
 3.  The sigma rate at 0.002 is tightly predicted by temperature alone.
-4.  The sigma prior plot peaks at zero and not in the middle because it can't take negative values.
+4.  The sigma prior plot peaks at zero and not in the middle because it can't take negative values. Measuring the scatter around the mean, so it can't be a negative number.
 5.  Posterior median for intercept = -2197.24, Posterior median for temp_feel = 82.20. These values are really close to the textbook's values of -2194.24 and 82.16. This closeness is not surprising because the data, n = 500, pulls more weight than the prior.
-6.  
-
-7\.
-
-8\.
-
-9\.
-
-10\.
+6.  It tells us what portion of a data is usable.
+7.  it means are chains aren't agreeing with each other.
+8.  mu is estimated at 3968, 95% credible interval 3840 to 4095. Posterior predictive 95% credible interval is 1398 to 6453. The posterior predictive is wider because compared to to mu which is narrow because it is an average.
+9.  
+10. 
