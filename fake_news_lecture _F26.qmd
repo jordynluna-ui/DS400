@@ -231,11 +231,11 @@ model1 <- naiveBayes(type ~ title_has_excl, news_data)
 model1
 ```
 
-```{r} # confusion matrix}
+```{r}
 news_data <- news_data %>%
   mutate(predicted_type = predict(model1, newdata = .))
 
-news_data %>% 
+news_data %>% # confusion matrix
   tabyl(type, predicted_type) %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 2) %>%
@@ -252,11 +252,11 @@ news_data %>%
 model2 <- naiveBayes(type ~ title_has_excl + title_words, news_data)
 ```
 
-```{r} # 1 = mean, 2 = standard deviation}
-model2
+```{r}
+model2 # 1 = mean, 2 = standard deviation
 ```
 
-```{r} #}
+```{r}
 news_data <- news_data %>%
   mutate(predicted_type = predict(model2, newdata = .))
 
@@ -305,7 +305,7 @@ news_data %>%
 ```
 
 | Model | Sensitivity (catching fake) | Specificity (catching real) | Accuracy |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | Model 1 (`title_has_excl`) | 26.67% | 97.78% | 69.3% |
 | Model 2 (+ `title_words`) | 36.67% | 90.00% | 68.7% |
 | Model 3 (+ `title_caps_percent`, `negative`) | **48.33%** | 83.33% | **69.33%** |
