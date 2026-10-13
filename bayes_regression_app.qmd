@@ -646,5 +646,5 @@ shinyApp(ui, server)
 6.  It tells us what portion of a data is usable.
 7.  it means are chains aren't agreeing with each other.
 8.  mu is estimated at 3968, 95% credible interval 3840 to 4095. Posterior predictive 95% credible interval is 1398 to 6453. The posterior predictive is wider because compared to to mu which is narrow because it is an average.
-9.  
-10. 
+9.  The posterior predictive interval's lower bound does dip below zero. This reveals the limitation of using a Normal distribution for ridership that it allows any real number including negatives and that a plain Normal model is only an approximation.
+10. The posterior median intercept would end up close to the original \~-2194 because with n = 500 real days and our priors not being extremely narrow our real data dominates and has more weight/pull.
