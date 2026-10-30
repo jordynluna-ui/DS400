@@ -1,0 +1,38 @@
+student,item,question,part,answer,correct,points,time
+Jordyn Luna,q1m,1,Choose the model,Bayesian logistic regression,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q1a,1,Odds multiplier for 15 points,0.72,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q1b,1,Odds vs probability,"A 15-point rise in humidity roughly doubles the probability of rain tomorrow, whatever the starting humidity was.",FALSE,0,2026-10-29 15:24
+Jordyn Luna,q2m,2,Choose the model,Naive Bayes classifier,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q3m,3,Choose the model,Hierarchical (multilevel) model,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q4m,4,Choose the model,Bayes' theorem,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q5m,5,Choose the model,Bayesian linear regression,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q6m,6,Choose the model,Naive Bayes classifier,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q6a,6,Accuracy with two predictors,0.953,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q6b,6,The 'naive' assumption,"Within each species, the predictors are treated as independent of each other.",TRUE,1,2026-10-29 15:24
+Jordyn Luna,q7m,7,Choose the model,Hierarchical (multilevel) model,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q2a,2,Posterior with a 10% base rate,0.574,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q2b,2,Meaning of P(! | fake),An article has a 27% chance of being fake.,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q3a,3,Why the slopes disagree,The pooled model mixes differences between runners with changes within a runner. The hierarchical model compares each runner with themselves.,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q3b,3,Between vs within runners,Runners differ from each other in baseline speed much more than one runner varies from year to year.,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q4a,4,"Posterior mean with Beta(5, 11)",0.379,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q4b,4,A flat prior,"A Beta(1, 1) prior is flat and carries only about 2 pseudo-observations, so the data dominate.",TRUE,1,2026-10-29 15:24
+Jordyn Luna,q5a,5,Interpret the slope,"On average, each additional degree of felt temperature is associated with about 82 more rides per day.",TRUE,1,2026-10-29 15:24
+Jordyn Luna,q5b,5,Interpret sigma,"The slope is uncertain by about 1,283 rides, so the effect of temperature cannot be pinned down precisely.",FALSE,0,2026-10-29 15:24
+Jordyn Luna,q7a,7,Respond to a colleague,"The pooled model mixes patterns between genres and artists with the pattern within an artist. Comparing songs by the same artist, more playlists go with higher popularity.",TRUE,1,2026-10-29 15:24
+Jordyn Luna,q7b,7,Causal claim,True,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q8a,8,Statement 1,Naive Bayes classifier,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q8b,8,Statement 2,Bayes' theorem,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q8c,8,Statement 3,Bayesian logistic regression,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q8d,8,Statement 4,Bayesian linear regression,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q8e,8,Statement 5,Bayes' theorem,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q8f,8,Statement 6,Naive Bayes classifier,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q8g,8,Statement 7,Beta-binomial model,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q9a,9,p-value,True,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q9b,9,Credible interval,True,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q9c,9,Partial pooling,True,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q9d,9,Naive Bayes,True,TRUE,1,2026-10-29 15:24
+Jordyn Luna,q9e,9,BART,True,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q9f,9,Few groups,True,FALSE,0,2026-10-29 15:24
+Jordyn Luna,q10a,10,Prevention vs TH,"Prevention definitely lowers reentry relative to TH, and the best single estimate of that reduction is exactly 3.9 points.",FALSE,0,2026-10-29 15:24
+Jordyn Luna,q10b,10,TH vs RRH,"RRH is clearly the better service on average, because the posterior mean of the difference is positive.",FALSE,0,2026-10-29 15:24
+Jordyn Luna,TOTAL,,,,NA,18,2026-10-29 15:24
