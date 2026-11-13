@@ -13,6 +13,7 @@ library(tidyverse)
 library(bayesrules)
 library(e1071)
 library(janitor)
+library(rstanarm)
 ```
 
 ### Data
@@ -82,7 +83,7 @@ nb_class_model_all
 
 ```{r}
 weather <- weather |> 
-  select(-predicted_type, -predicted_rain)
+  select(-predicted_rain)
 ```
 
 ```{r}

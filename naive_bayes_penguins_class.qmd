@@ -16,7 +16,7 @@ options(scipen = 99)
 
 assuming our features are independent from each other, not correlated
 
-assume our numeric features are not normally distributed, not left skewed or right skewed
+assume our numeric features are of normal distribution, not left skewed or right skewed
 
 ### Story
 

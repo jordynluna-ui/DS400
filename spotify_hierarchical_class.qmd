@@ -59,6 +59,7 @@ ggplot(data = spotify, aes(x = popularity, y = artist, fill = artist)) +
 ```
 
 4.  
+
     4.  is genre associated with popularity?
 
 ```{r}
@@ -102,7 +103,7 @@ spotify_valence_popularity_model <- stan_glmer(
 ```
 
 | Piece | What it does |
-|------------------------------------|------------------------------------|
+|----|----|
 | `stan_glmer(...)` | Fits a Bayesian multilevel (mixed-effects) regression with Stan, from the `rstanarm` package. |
 | `popularity ~ valence` | The fixed part: popularity changes linearly with valence, with one shared slope β₁ for all artists. |
 | `+ (1 | artist)` | The random intercept. Each artist gets their own baseline shift b₀ⱼ, drawn from a common distribution with SD σ₀. The `1` means intercept only. `(valence | artist)` would also give each artist their own valence slope. |
