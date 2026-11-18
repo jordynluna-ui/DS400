@@ -246,8 +246,16 @@ Pooling all runners’ data together masks the fact that most *individual* runne
 Use the [text](https://www.bayesrulesbook.com/chapter-15) to answer these questions:\
 Can you give me an example when we might want to use the partial pooling approach?
 
-1.  Why wouldn’t we always just use the complete pooling approach? It seems easier
+I want to measure how free-throw percentage changes over a season for players on my middle school team I help coach. Each player has taken many attempts and players differ in their baseline skill and in how they trend as the season goes on.
+
+1.  Why wouldn’t we always just use the complete pooling approach?
+
+    It assumes that every observation is independent and that one solution/result fits everyone.
 
 2.  Does the no pooled approach have any drawbacks? It seems that there are fewer assumptions.
 
+    Yes, the no pooled approach has drawbacks. It doesn't generalize and ignores useful information when a group has little data.
+
 3.  Can you remind me what the difference is between *within-group* variability and *between-group* variability? And how does that relate to partial pooling?
+
+Within-group variability is how much observations vary in one group and between-group variability is how much the groups differ from each other. This relates to partial pooling because partial pooling uses both, the amount of pull the data has depends on the within-group variability and the between-group variability.
