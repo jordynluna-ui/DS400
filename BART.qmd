@@ -33,7 +33,7 @@ synthetic_hims_data <- read_csv(here("data/synthetic_hmis.csv"))
 **Identifiers and outcome**
 
 | Column | Meaning |
-|------------------------------------|------------------------------------|
+|----|----|
 | `id` | Household ID. Rows are shuffled, so the order means nothing. |
 | `service` | The service the household actually received: ES, TH, RRH or Prev. |
 | `reentry` | The outcome. 1 means the household needed homeless services again within 2 years, and 0 means it didn’t. |
@@ -42,14 +42,14 @@ synthetic_hims_data <- read_csv(here("data/synthetic_hmis.csv"))
 **Derived groups from the paper’s hypotheses**
 
 | Column | Meaning |
-|------------------------------------|------------------------------------|
+|----|----|
 | `family` | 1 if the household has at least one child. |
 | `comorbid` | 1 if the head of household has at least 2 of: a disability (`disabling` or `phys_disab`), an alcohol problem, or a drug problem. |
 
 **Household composition**
 
 | Column | Meaning |
-|------------------------------------|------------------------------------|
+|----|----|
 | `members` | Total household size: 1 + spouse + children + unrelated adults and children. |
 | `spouse` | 1 if a spouse is present. |
 | `children` | Number of children. |
@@ -88,7 +88,7 @@ synthetic_hims_data <- read_csv(here("data/synthetic_hmis.csv"))
 **Situation at entry (text categories)**
 
 | Column | Meaning |
-|------------------------------------|------------------------------------|
+|----|----|
 | `housing_status` | `homeless`, `imminent_risk` (about to lose housing), `at_risk`, `stably_housed` or `other`. |
 | `prior_residence` | Where the household came from: `emergency_shelter`, `transitional`, `substance_tx`, `hospital`, `family_home`, `friend_home`, `not_habitation` (a place not meant for habitation), `rental_subsidy`, `rental_nosubsidy`, `owned` or `other`. |
 
