@@ -30,6 +30,10 @@ List each dataset and where it comes from (agency, website, link). Note the form
 
 <https://wehoop.sportsdataverse.org/>
 
+install.packages("wehoop")
+
+wbb \<- load_wbb_team_box(seasons = 2016:2026)
+
 An R package for working with women's college and professional basketball data.
 
 ------------------------------------------------------------------------
