@@ -8,7 +8,7 @@ editor: visual
 ## Loading in the Data
 
 ```{r}
-install.packages("wehoop")
+#install.packages("wehoop")
 library(wehoop)
 library(dplyr)
 library(tidyverse)
@@ -26,37 +26,129 @@ wbb <- load_wbb_team_box(seasons = 2016:2026)
 ## Cleaning Data & Creating Power 4 Conferences
 
 ```{r}
-wbb <- wbb |>
-  mutate(conference = case_when(
-    team_display_name %in% c("South Carolina Gamecocks", "LSU Tigers",
-                             "Tennessee Lady Volunteers", "Texas Longhorns", "Vanderbuilt Commodores", "Oklahoma Sooners", "Kentucky Wildcats", "Georgia Lady Bulldogs", "Ole Miss Rebels", "Alabama Crimson Tide", "Texas A&M Aggies", "Mississippi State Bulldogs", "Florida Gators", "Missouri Tigers", "Auburn Tigers", "Arkansas Razorbacks") ~ "SEC",
-    team_display_name %in% c("Iowa Hawkeyes", "Ohio State Buckeyes",
-                             "Indiana Hoosiers", "UCLA Bruins", "Michigan Wolverines", "Minnesota Golden Gophers", "Maryland Terrapins", "Michigan State Spartans", "Washington Huskies", "Illinois Fighting Illini", "USC Trojans", "Oregon Ducks", "Nebraska Cornhuskers", "Wisconsin Badgers", "Purdue Boilmakers", "Penn State Lady Lions", "Northwestern Wildcats", "Rutgers Scarlet Knights") ~ "Big Ten",
-    team_display_name %in% c("Duke Blue Devils", "Louisville Cardinals", "North Carolina Tar Heels", "NC State Wolfpack", "Syracuse Orange", "Virginia Tech Hokies", "Notre Dame Fighting Irish", "Virginia Cavaliers", "Clemson Tigers", "California Golden Bears", "Stanford Cardinal", "Miami Hurricanes", "Georgia Tech Yellow Jackets", "Florida State Seminoles", "Wake Forest Demon Deacons", "Saint Mary's Gaels", "Pittsburgh Panthers", "Boston College Eagles") ~ "ACC",
-    team_display_name %in% c("TCU Horned Frogs", "West Virginia Mountaineers", "Baylor Bears", "Texas Tech Lady Raiders", "Oklahoma State Cowgirls", "Colorado Buffaloes", "Iowa State Cyclones", "Utah Utes", "Arizona State Sun Devils", "BYU Cougars", "Kansas Jayhawks", "Kansas State Wildcats", "Cincinnati Bearcats", "Arizona Wildcats", "UCF Knights", "Houston Cougars") ~ "Big 12",
-    TRUE ~ "Other"
-  ))
+# Creating Power 4 Conferences
+# wbb <- wbb |>
+#   mutate(conference = case_when(
+#     team_display_name %in% c("South Carolina Gamecocks", "LSU Tigers",
+#                              "Tennessee Lady Volunteers", "Texas Longhorns", "Vanderbuilt Commodores", "Oklahoma Sooners", "Kentucky Wildcats", "Georgia Lady Bulldogs", "Ole Miss Rebels", "Alabama Crimson Tide", "Texas A&M Aggies", "Mississippi State Bulldogs", "Florida Gators", "Missouri Tigers", "Auburn Tigers", "Arkansas Razorbacks") ~ "SEC",
+#     team_display_name %in% c("Iowa Hawkeyes", "Ohio State Buckeyes",
+#                              "Indiana Hoosiers", "UCLA Bruins", "Michigan Wolverines", "Minnesota Golden Gophers", "Maryland Terrapins", "Michigan State Spartans", "Washington Huskies", "Illinois Fighting Illini", "USC Trojans", "Oregon Ducks", "Nebraska Cornhuskers", "Wisconsin Badgers", "Purdue Boilmakers", "Penn State Lady Lions", "Northwestern Wildcats", "Rutgers Scarlet Knights") ~ "Big Ten",
+#     team_display_name %in% c("Duke Blue Devils", "Louisville Cardinals", "North Carolina Tar Heels", "NC State Wolfpack", "Syracuse Orange", "Virginia Tech Hokies", "Notre Dame Fighting Irish", "Virginia Cavaliers", "Clemson Tigers", "California Golden Bears", "Stanford Cardinal", "Miami Hurricanes", "Georgia Tech Yellow Jackets", "Florida State Seminoles", "Wake Forest Demon Deacons", "Saint Mary's Gaels", "Pittsburgh Panthers", "Boston College Eagles") ~ "ACC",
+#     team_display_name %in% c("TCU Horned Frogs", "West Virginia Mountaineers", "Baylor Bears", "Texas Tech Lady Raiders", "Oklahoma State Cowgirls", "Colorado Buffaloes", "Iowa State Cyclones", "Utah Utes", "Arizona State Sun Devils", "BYU Cougars", "Kansas Jayhawks", "Kansas State Wildcats", "Cincinnati Bearcats", "Arizona Wildcats", "UCF Knights", "Houston Cougars") ~ "Big 12",
+#     TRUE ~ "Other"
+#   ))
+# 
+# wbb <- wbb |>
+#   group_by(season, team_display_name) |>
+#   mutate(games_won = sum(team_winner, na.rm = TRUE)) |>
+#   ungroup()
+# 
+# # Drop specific columns
+# wbb <- wbb |> 
+#   select(-c(game_date_time, flagrant_fouls, fouls, largest_lead, technical_fouls, total_technical_fouls, total_turnovers, opponent_team_uid, opponent_team_color, opponent_team_alternate_color, opponent_team_logo, fast_break_points, lead_percentage, lead_changes, points_in_paint, turnover_points, team_color, team_alternate_color, team_uid, game_date_time))
+# 
+# wbb <- wbb |> 
+#   select(-c(team_logo, team_turnovers, opponent_team_slug, opponent_team_location, opponent_team_abbreviation, opponent_team_id, team_name, team_location, team_slug, team_id))
+# 
+# # Change season-type
+# wbb <- wbb |> 
+#   mutate(
+#     season_type = case_when(
+#     season_type == 2 ~ "Regular Season",
+#     season_type == 3 ~ "Post-season",
+#     .default = as.character(season_type)
+#   ))
+# 
+# # See the average turnovers that will win and lose a game
+# # wbb |> 
+# #   group_by(season) |> 
+# #   summarize(mean_TO = mean(turnovers, na.rm = TRUE))
+# # 
+# # 
+# # ggplot(data = wbb, aes(x = as.factor(season), y = turnovers)) +
+# #   geom_boxplot() +
+# #   geom_jitter(size = 0.05)
+# # 
+# # 
+# # # season 2019 had a massive outlier for turnovers over 700, which is not possible so more cleaning of data
+# # summary(wbb$turnovers)
+# # 
+# # wbb |>
+# #   arrange(desc(turnovers)) |>
+# #   select(game_id, season, game_date, team_winner, team_display_name,
+# #          opponent_team_display_name, turnovers, team_score, opponent_team_score) |>
+# #   slice_head(n = 10)
+# 
+# # Find the row
+# wbb |>
+#   filter(turnovers == 727) |> 
+#   select(game_id, team_display_name, turnovers)
+# 
+# # Fix it
+# wbb <- wbb |>
+#   mutate(turnovers = ifelse(turnovers == 727, 27, turnovers))
+```
 
-wbb <- wbb |>
-  group_by(season, team_display_name) |>
-  mutate(games_won = sum(team_winner, na.rm = TRUE)) |>
-  ungroup()
+There are many factors as to why one team will win a basketball game and one team will lose a basketball game. You can look at different stats and see which team will win the game or why a team lost a game. Instead of focusing on many different basketball stats, we are going to focus specifically on turnovers.
 
-# Drop specific ones
-wbb <- wbb |> 
-  select(-c(game_date_time, flagrant_fouls, fouls, largest_lead, technical_fouls, total_technical_fouls, total_turnovers, opponent_team_uid, opponent_team_color, opponent_team_alternate_color, opponent_team_logo, fast_break_points, lead_percentage, lead_changes, points_in_paint, turnover_points, team_color, team_alternate_color, team_uid, game_date_time))
+Turnovers are when one team loses the ball to the other team via a bad pass, offensive foul, a steal, etc. Coaches and analysts have always treated turnovers as devastating.
 
-wbb <- wbb |> 
-  select(-c(team_logo, team_turnovers, opponent_team_slug, opponent_team_location, opponent_team_abbreviation, opponent_team_id, team_name, team_location, team_slug, team_id))
+Why Turnovers are critical. Turnovers result in empty possessions, doesn't generate any points or a shot attempt. Turnovers allow for zero chance at second-chance points, higher transition points allowed, and no foul opportunities.
 
-wbb <- wbb |> 
-  mutate(
-    season_type = case_when(
-    season_type == 2 ~ "Regular Season",
-    season_type == 3 ~ "Post-season",
-    .default = as.character(season_type)
-  ))
+So womens college basketball game, what is the relationship between turnovers and winning the game?
 
+1.  Turnovers of winning team compared to losing team
+
+```{r}
+ggplot(data = games, aes(x = loser_TO, y = winner_TO)) +
+  geom_jitter(size = 0.5) + 
+  geom_smooth(method = "lm", se = FALSE, fullrange = TRUE)
+```
+
+2.  What is the average number of turnovers in a season?
+
+```{r}
+# See the average turnovers that will win and lose a game
+wbb |>
+  group_by(season) |>
+  summarize(mean_TO = mean(turnovers, na.rm = TRUE))
+
+ggplot(data = wbb, aes(x = as.factor(season), y = turnovers, fill = team_winner)) +
+  geom_boxplot() 
+```
+
+Cleaning Data
+
+```{r}
+
+games <- wbb |>
+  filter(!is.na(turnovers), !is.na(team_winner)) |>
+  group_by(game_id, season) |>
+  summarise(
+    n_rows    = n(),
+    winner    = team_display_name[team_winner][1],
+    loser     = team_display_name[!team_winner][1],
+    winner_TO = turnovers[team_winner][1],
+    loser_TO  = turnovers[!team_winner][1],
+    .groups = "drop"
+  ) |>
+  filter(n_rows == 2, !is.na(winner_TO), !is.na(loser_TO)) |>
+  mutate(TO_diff = winner_TO - loser_TO)
+
+# Games where the winner had MORE turnovers than the loser
+more_TO_winners <- games |> 
+  filter(winner_TO > loser_TO)
+
+more_TO_winners |> 
+  arrange(desc(TO_diff)) |> 
+  head(10)
+```
+
+Games where winning team had more turnovers than the losing team
+
+```{r}
+ggplot(data = more_TO_winners, aes(x = loser_TO, y = winner_TO)) +
+  geom_jitter(size = 0.5) 
 ```
 
 # Partial Pooling with Hierarchical Models
